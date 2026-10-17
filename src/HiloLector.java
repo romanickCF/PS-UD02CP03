@@ -14,7 +14,7 @@ public class HiloLector extends Thread {
     /**
      * Variable compartida con la que este hilo interactúa.
      */
-    private  VariableCompartida variable;
+    private final VariableCompartida variable;
 
 
     /**
@@ -39,7 +39,6 @@ public class HiloLector extends Thread {
     public void run() {
         for (int i = 0; i < 100; i++) {
             System.out.println(variable.get());
-
         }
     }
 }

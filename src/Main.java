@@ -13,11 +13,10 @@
  * que el hilo lector espera a que exista un valor disponible para
  * poder leerlo.</p>
  */
-void main() {
+void main() throws InterruptedException {
 
     VariableCompartida variableCompartida = new VariableCompartida();
 
-    variableCompartida.set(0);
 
     HiloEscritor escritor = new HiloEscritor(variableCompartida);
     HiloLector lector = new HiloLector(variableCompartida);
@@ -25,6 +24,9 @@ void main() {
 
     escritor.start();
     lector.start();
+
+    escritor.join();
+    lector.join();
 
 
 }

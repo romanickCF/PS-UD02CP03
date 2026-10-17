@@ -39,8 +39,9 @@ public class VariableCompartida {
      * @return el valor actual de la variable compartida
      */
     public synchronized int get() {
+
         while (!hayValor) {
-            try { wait(); } catch (InterruptedException e) {}
+            try { wait(); } catch (InterruptedException _) {}
         }
         hayValor = false;
         notifyAll();
@@ -59,15 +60,21 @@ public class VariableCompartida {
      * @param v el nuevo valor a asignar
      */
     public synchronized void set(int v) {
+
         while (hayValor){
             try {
                 wait();
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException _) {}
         }
 
         this.v = v;
         hayValor = true;
         notifyAll();
     }
+
+
+
+
+
 
 }
